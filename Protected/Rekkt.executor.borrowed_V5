@@ -1,0 +1,346 @@
+local G2L = {};
+
+-- StarterGui.ScreenGui
+G2L["1"] = Instance.new("ScreenGui", game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui"));
+G2L["1"]["ZIndexBehavior"] = Enum.ZIndexBehavior.Sibling;
+
+
+-- StarterGui.ScreenGui.Holder
+G2L["2"] = Instance.new("Frame", G2L["1"]);
+G2L["2"]["BorderSizePixel"] = 0;
+G2L["2"]["BackgroundColor3"] = Color3.fromRGB(191, 191, 191);
+G2L["2"]["Size"] = UDim2.new(0.28529, 0, 0.04104, 0);
+G2L["2"]["Position"] = UDim2.new(0.35736, 0, 0.23507, 0);
+G2L["2"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["2"]["Name"] = [[Holder]];
+
+
+-- StarterGui.ScreenGui.Holder.TextLabel
+G2L["3"] = Instance.new("TextLabel", G2L["2"]);
+G2L["3"]["BorderSizePixel"] = 0;
+G2L["3"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["3"]["TextSize"] = 16;
+G2L["3"]["FontFace"] = Font.new([[rbxasset://fonts/families/Arial.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+G2L["3"]["TextColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["3"]["BackgroundTransparency"] = 1;
+G2L["3"]["Size"] = UDim2.new(1, 0, 0.98043, 0);
+G2L["3"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["3"]["Text"] = [[RekktExecutor, same UNC/LVL as your executor]];
+
+
+-- StarterGui.ScreenGui.Holder.TextLabel.UITextSizeConstraint
+G2L["4"] = Instance.new("UITextSizeConstraint", G2L["3"]);
+G2L["4"]["MinTextSize"] = 20;
+
+
+-- StarterGui.ScreenGui.Holder.Frame
+G2L["5"] = Instance.new("Frame", G2L["2"]);
+G2L["5"]["BorderSizePixel"] = 0;
+G2L["5"]["BackgroundColor3"] = Color3.fromRGB(232, 232, 232);
+G2L["5"]["Size"] = UDim2.new(1.00392, 0, 10.75407, 0);
+G2L["5"]["Position"] = UDim2.new(-0.00392, 0, 0.99265, 0);
+G2L["5"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+
+
+-- StarterGui.ScreenGui.Holder.Frame.execute
+G2L["6"] = Instance.new("TextButton", G2L["5"]);
+G2L["6"]["TextWrapped"] = true;
+G2L["6"]["BorderSizePixel"] = 0;
+G2L["6"]["TextSize"] = 43;
+G2L["6"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["6"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["6"]["FontFace"] = Font.new([[rbxasset://fonts/families/Arial.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+G2L["6"]["Size"] = UDim2.new(0.44517, 0, 0.14391, 0);
+G2L["6"]["Name"] = [[execute]];
+G2L["6"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["6"]["Text"] = [[Exceute]];
+G2L["6"]["Style"] = Enum.ButtonStyle.RobloxRoundDefaultButton;
+G2L["6"]["Position"] = UDim2.new(0.0551, 0, 0.8062, 0);
+
+
+-- StarterGui.ScreenGui.Holder.Frame.clear
+G2L["7"] = Instance.new("TextButton", G2L["5"]);
+G2L["7"]["TextWrapped"] = true;
+G2L["7"]["BorderSizePixel"] = 0;
+G2L["7"]["TextSize"] = 43;
+G2L["7"]["TextColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["7"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["7"]["FontFace"] = Font.new([[rbxasset://fonts/families/Arial.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+G2L["7"]["Size"] = UDim2.new(0.44361, 0, 0.14391, 0);
+G2L["7"]["Name"] = [[clear]];
+G2L["7"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["7"]["Text"] = [[Cleer]];
+G2L["7"]["Style"] = Enum.ButtonStyle.RobloxRoundDefaultButton;
+G2L["7"]["Position"] = UDim2.new(0.51969, 0, 0.8062, 0);
+
+
+-- StarterGui.ScreenGui.Holder.Frame.ScrollingFrame
+G2L["8"] = Instance.new("ScrollingFrame", G2L["5"]);
+G2L["8"]["Active"] = true;
+G2L["8"]["BorderSizePixel"] = 0;
+G2L["8"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["8"]["Size"] = UDim2.new(0.91395, 0, 0.5661, 0);
+G2L["8"]["ScrollBarImageColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["8"]["Position"] = UDim2.new(0.05512, 0, 0.21447, 0);
+G2L["8"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["8"]["ScrollBarThickness"] = 0;
+
+
+-- StarterGui.ScreenGui.Holder.Frame.ScrollingFrame.editor
+G2L["9"] = Instance.new("TextBox", G2L["8"]);
+G2L["9"]["CursorPosition"] = -1;
+G2L["9"]["TextColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["9"]["BorderSizePixel"] = 0;
+G2L["9"]["TextXAlignment"] = Enum.TextXAlignment.Left;
+G2L["9"]["TextSize"] = 54;
+G2L["9"]["Name"] = [[editor]];
+G2L["9"]["TextYAlignment"] = Enum.TextYAlignment.Top;
+G2L["9"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["9"]["FontFace"] = Font.new([[rbxasset://fonts/families/Arial.json]], Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+G2L["9"]["MultiLine"] = true;
+G2L["9"]["ClearTextOnFocus"] = false;
+G2L["9"]["PlaceholderText"] = [[sciript Here]];
+G2L["9"]["Size"] = UDim2.new(1.0006, 0, 3.2517, 0);
+G2L["9"]["Position"] = UDim2.new(-0.0006, 0, 0, 0);
+G2L["9"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["9"]["Text"] = [[]];
+
+
+-- StarterGui.ScreenGui.Holder.Frame.Advertisement
+G2L["a"] = Instance.new("ImageLabel", G2L["5"]);
+G2L["a"]["BorderSizePixel"] = 0;
+G2L["a"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["a"]["Image"] = [[rbxassetid://14096779221]];
+G2L["a"]["Size"] = UDim2.new(0.91395, 0, 0.15104, 0);
+G2L["a"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["a"]["Name"] = [[Advertisement]];
+G2L["a"]["Position"] = UDim2.new(0.0525, 0, 0.03031, 0);
+
+
+-- StarterGui.ScreenGui.Holder.Frame.Advertisement.CloseButton
+G2L["b"] = Instance.new("ImageButton", G2L["a"]);
+G2L["b"]["BorderSizePixel"] = 0;
+G2L["b"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255);
+G2L["b"]["Image"] = [[http://www.roblox.com/asset/?id=117618491302293]];
+G2L["b"]["Size"] = UDim2.new(0.04123, 0, 0.26564, 0);
+G2L["b"]["Name"] = [[CloseButton]];
+G2L["b"]["BorderColor3"] = Color3.fromRGB(0, 0, 0);
+G2L["b"]["Position"] = UDim2.new(0.95877, 0, 0, 0);
+
+
+-- StarterGui.ScreenGui.Scripts
+G2L["c"] = Instance.new("Folder", G2L["1"]);
+G2L["c"]["Name"] = [[Scripts]];
+
+
+-- StarterGui.ScreenGui.Scripts.Sound
+G2L["d"] = Instance.new("LocalScript", G2L["c"]);
+G2L["d"]["Name"] = [[Sound]];
+
+
+-- StarterGui.ScreenGui.Scripts.Draggify
+G2L["e"] = Instance.new("LocalScript", G2L["c"]);
+G2L["e"]["Name"] = [[Draggify]];
+
+
+-- StarterGui.ScreenGui.Scripts.Advertisement
+G2L["f"] = Instance.new("LocalScript", G2L["c"]);
+G2L["f"]["Name"] = [[Advertisement]];
+
+
+-- StarterGui.ScreenGui.Scripts.Premium
+G2L["10"] = Instance.new("BoolValue", G2L["c"]);
+G2L["10"]["Name"] = [[Premium]];
+
+
+-- StarterGui.ScreenGui.Scripts.Funcs
+G2L["11"] = Instance.new("LocalScript", G2L["c"]);
+G2L["11"]["Name"] = [[Funcs]];
+
+
+-- StarterGui.ScreenGui.Sounds
+G2L["12"] = Instance.new("Folder", G2L["1"]);
+G2L["12"]["Name"] = [[Sounds]];
+
+
+-- StarterGui.ScreenGui.Sounds.Button
+G2L["13"] = Instance.new("Sound", G2L["12"]);
+G2L["13"]["Volume"] = 2;
+G2L["13"]["RollOffMode"] = Enum.RollOffMode.InverseTapered;
+G2L["13"]["Name"] = [[Button]];
+G2L["13"]["SoundId"] = [[rbxassetid://12221967]];
+
+
+-- StarterGui.ScreenGui.Sounds.Kerplunk
+G2L["14"] = Instance.new("Sound", G2L["12"]);
+G2L["14"]["Volume"] = 2;
+G2L["14"]["RollOffMode"] = Enum.RollOffMode.InverseTapered;
+G2L["14"]["Name"] = [[Kerplunk]];
+G2L["14"]["SoundId"] = [[rbxassetid://12222054]];
+
+
+-- StarterGui.ScreenGui.Sounds.Ouch
+G2L["15"] = Instance.new("Sound", G2L["12"]);
+G2L["15"]["RollOffMode"] = Enum.RollOffMode.InverseTapered;
+G2L["15"]["Name"] = [[Ouch]];
+G2L["15"]["SoundId"] = [[rbxassetid://12222058]];
+
+
+-- StarterGui.ScreenGui.Scripts.Sound
+local function C_d()
+local script = G2L["d"];
+	local button1 = script.Parent.Parent.Holder.Frame.execute
+	local button2 = script.Parent.Parent.Holder.Frame.clear
+	local buttonsound = script.Parent.Parent.Sounds.Button
+	local kerplunksound = script.Parent.Parent.Sounds.Kerplunk
+	
+	button1.MouseButton1Click:Connect(function()
+	    buttonsound:Play()
+	end)
+	button2.MouseButton1Click:Connect(function()
+		kerplunksound:Play()
+	end)
+	
+	
+end;
+task.spawn(C_d);
+-- StarterGui.ScreenGui.Scripts.Draggify
+local function C_e()
+local script = G2L["e"];
+	local UserInputService = game:GetService("UserInputService")
+	
+	local gui = script.Parent.Parent.Holder
+	
+	local dragging
+	local dragInput
+	local dragStart
+	local startPos
+	
+	local function update(input)
+		local delta = input.Position - dragStart
+		gui.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+	end
+	
+	gui.InputBegan:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+			dragging = true
+			dragStart = input.Position
+			startPos = gui.Position
+			
+			input.Changed:Connect(function()
+				if input.UserInputState == Enum.UserInputState.End then
+					dragging = false
+				end
+			end)
+		end
+	end)
+	
+	gui.InputChanged:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+			dragInput = input
+		end
+	end)
+	
+	UserInputService.InputChanged:Connect(function(input)
+		if input == dragInput and dragging then
+			update(input)
+		end
+	end)
+end;
+task.spawn(C_e);
+-- StarterGui.ScreenGui.Scripts.Advertisement
+local function C_f()
+local script = G2L["f"];
+	local adImg = script.Parent.Parent.Holder.Frame.Advertisement
+	local adCancel = script.Parent.Parent.Holder.Frame.Advertisement.CloseButton
+	local random = math.random(0, 10)
+	local isPremium = script.Parent.Premium
+	local scriptEditor = script.Parent.Parent.Holder.Frame.ScrollingFrame.editor
+	local ouch = script.Parent.Parent.Sounds.Ouch
+	local button = script.Parent.Parent.Sounds.Button
+	
+	local function closeAd()
+		print("clicked")
+		if isPremium.Value == true then
+			adImg:Destroy()
+		elseif isPremium.Value == false then
+			button:Play()
+			scriptEditor.Text = ""
+			scriptEditor.PlaceholderText = "vip neded for closing of Ad !"
+			wait(3)
+			scriptEditor.PlaceholderText = "sciript Here"
+		end
+	end
+	
+	while wait(7.5) do
+		local random = math.random(1, 20)
+		if random == 10 then
+			adImg.Image = "rbxassetid://2483186"
+		elseif random == 9 then
+			adImg.Image = "rbxassetid://7205866972"
+		elseif random == 8 then
+			adImg.Image = "rbxassetid://1847902752"
+		elseif random == 7 then
+			adImg.Image = "rbxassetid://48425069728"
+		elseif random == 6 then
+			adImg.Image = "rbxassetid://11176073582"
+		elseif random == 5 then
+			adImg.Image = "rbxassetid://11176073582"
+		elseif random == 4 then
+			adImg.Image = "rbxassetid://7279137105"
+		elseif random == 3 then
+			adImg.Image = "rbxassetid://935443517"
+		elseif random == 2 then
+			adImg.Image = "rbxassetid://8964489645"
+		elseif random == 1 then
+			adImg.Image = "rbxassetid://6239919254"
+		elseif random == 11 then
+			adImg.Image = "rbxassetid://514171852"
+		elseif random == 12 then
+			adImg.Image = "rbxassetid://6239919254"
+		elseif random == 13 then
+			adImg.Image = "rbxassetid://62688663"
+		elseif random == 14 then
+			adImg.Image = "rbxassetid://6239919254"
+		elseif random == 15 then
+			adImg.Image = "rbxassetid://45473251"
+		elseif random == 16 then
+			adImg.Image = "rbxassetid://6239919254"
+		elseif random == 17 then
+			adImg.Image = "rbxassetid://335025948"
+		elseif random == 18 then
+			adImg.Image = "rbxassetid://6239919254"
+		elseif random == 19 then
+			adImg.Image = "rbxassetid://114487601"
+		elseif random == 20 then
+			adImg.Image = "rbxassetid://6239919254"
+		end
+	end
+	
+	adCancel.MouseButton1Click:Connect(closeAd)
+end;
+task.spawn(C_f);
+-- StarterGui.ScreenGui.Scripts.Funcs
+local function C_11()
+local script = G2L["11"];
+	local holder = script.Parent.Parent.Holder
+	local main = holder.Frame
+	local editor = main.ScrollingFrame.editor
+	local execute = main.execute
+	local clear = main.clear
+	
+	local function executefunc()
+		loadstring(
+			editor.Text
+		)()
+	end
+	local function clearfunc()
+		editor.Text = ""
+	end
+	
+	execute.MouseButton1Click:Connect(executefunc)
+	clear.MouseButton1Click:Connect(clearfunc)
+end;
+task.spawn(C_11);
+
+return G2L["1"], require;
