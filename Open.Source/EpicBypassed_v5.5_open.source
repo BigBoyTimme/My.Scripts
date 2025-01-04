@@ -1,0 +1,372 @@
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+
+local message = ""
+local format = "Morse Code"
+
+local function toMorse(text)
+    local morseDict = {
+        A = ".-", B = "-...", C = "-.-.", D = "-..", E = ".", F = "..-.", G = "--.", H = "....", I = "..",
+        J = ".---", K = "-.-", L = ".-..", M = "--", N = "-.", O = "---", P = ".--.", Q = "--.-", R = ".-.",
+        S = "...", T = "-", U = "..-", V = "...-", W = ".--", X = "-..-", Y = "-.--", Z = "--..",
+        ["1"] = ".----", ["2"] = "..---", ["3"] = "...--", ["4"] = "....-", ["5"] = ".....",
+        ["6"] = "-....", ["7"] = "--...", ["8"] = "---..", ["9"] = "----.", ["0"] = "-----", [" "] = "/"
+    }
+    text = text:upper()
+    return text:gsub(".", function(c) return morseDict[c] or c end):gsub(" ", " ")
+end
+
+local function toBinary(text)
+    local binary = {}
+    for i = 1, #text do
+        table.insert(binary, string.format("%08b", string.byte(text:sub(i, i))))
+    end
+    return table.concat(binary, " ")
+end
+
+local selectedMode = "Dots (2nd best)"
+local selectedMode2 = "Dots (BETTER)"
+
+local fontMap = {
+    ["Dots (2nd best)"] = {n = "ṅ", s = "ṡ", l = "ḷ", b = "ḅ", f = "ḟ"}
+}
+
+local fontMap2 = {
+    ["Dots (BETTER)"] = {n = "ṅ", s = "ṡ", b = "ḅ", f = "ḟ"}
+}
+
+local function convertToFont(input, mode)
+    local output = ""
+    for char in input:lower():gmatch(".") do
+        local convertedChar = fontMap[mode] and fontMap[mode][char]
+        if char:upper() == char and convertedChar then
+            convertedChar = convertedChar:upper()
+        end
+        output = output .. (convertedChar or char)
+    end
+    return output
+end
+
+local function convertToFontBETTER(input, mode)
+    local output = ""
+    for char in input:lower():gmatch(".") do
+        local convertedChar = fontMap2[mode] and fontMap2[mode][char]
+        if char:upper() == char and convertedChar then
+            convertedChar = convertedChar:upper()
+        end
+        output = output .. (convertedChar or char)
+    end
+    return output
+end
+
+local function sendMessageCoded(translatedMessage)
+    local TextChatService = game:GetService("TextChatService")
+    local LocalPlayer = game:GetService("Players").LocalPlayer
+    
+    if TextChatService and LocalPlayer then
+        local chatInput = TextChatService.TextChannels.RBXGeneral:SendAsync(translatedMessage)
+        
+        if chatInput then
+            print("Message sent successfully!")
+        else
+            warn("Failed to send the message.")
+        end
+    else
+        warn("TextChatService or LocalPlayer is not available.")
+    end
+end
+
+local function sendMessage(text)
+    local chatService = game:GetService("TextChatService")
+    if chatService then
+        local chatChannel = chatService.TextChannels.RBXGeneral
+        if chatChannel then
+            chatChannel:SendAsync(text)
+        else
+            warn("Default chat channel not found.")
+        end
+    else
+        warn("TextChatService is not available.")
+    end
+end
+
+local function sendMessageIfNoTags(text)
+    local chatService = game:GetService("TextChatService")
+    if chatService then
+        local chatChannel = chatService.TextChannels.RBXGeneral
+        if chatChannel then
+            if not text:match("<%a+>") then
+                chatChannel:SendAsync(text)
+            else
+                warn("Message contains tags and was not sent.")
+            end
+        else
+            warn("Default chat channel not found.")
+        end
+    else
+        warn("TextChatService is not available.")
+    end
+end
+
+local Window = Rayfield:CreateWindow({
+    Name = "EpicBypassed v5.5",
+    Icon = 0,
+    LoadingTitle = "Premium discontinued !!",
+    LoadingSubtitle = "By bigboytimme",
+    Theme = "DarkBlue",
+    
+    DisableRayfieldPrompts = false,
+    DisableBuildWarnings = true,
+    
+    ConfigurationSaving = {
+        Enabled = false,
+        FolderName = "EpicBypass",
+        FileName = "EpicBypassed Premium"
+    },
+    
+    Discord = {
+        Enabled = false,
+        Invite = "2xWPd6rD",
+        RememberJoins = false
+    },
+    
+    KeySystem = false,
+    KeySettings = {
+        Title = "Untitled",
+        Subtitle = "Key System",
+        Note = "No method of obtaining the key is provided",
+        FileName = "Key",
+        SaveKey = true,
+        GrabKeyFromSite = false,
+        Key = {"Hello"}
+    }
+})
+
+Rayfield:Notify({
+    Title = "Loaded!",
+    Content = "The script has been executed using Rayfeild.",
+    Duration = 5,
+	Image = "shield-check"
+})
+
+local BypasserTab = Window:CreateTab("Bypasser !!", 4483362458)
+local MainBypasserSection = BypasserTab:CreateSection("Main uses")
+
+local input = BypasserTab:CreateInput({
+    Name = "Bypasser",
+    CurrentValue = "",
+    PlaceholderText = "Enter Text",
+    RemoveTextAfterFocusLost = true,
+    Callback = function(value)
+        local convertedText = convertToFont(value, "Dots (2nd best)")
+        sendMessage(convertedText)
+    end,
+})
+
+local FixBypassButton = BypasserTab:CreateButton({
+	Name = "Fix Bypass",
+	Callback = function(value)
+		value = "/e Roblox.fucking.sucks.fix"
+		local convertedText = convertToFont(value, "Dots (2nd best)")
+		sendMessage(convertedText)
+	end,
+})
+
+local OldBypasserButton = BypasserTab:CreateButton({
+	Name = "Old Bypasser (Orion Lib)",
+	Callback = function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/BigBoyTimme/My.Scripts/refs/heads/main/Protected/EpicBypassed_V4.6_OLD"))()
+	end
+})
+local WarningLabel = BypasserTab:CreateLabel("!Premium less noticiable, but still banable!", "octagon-alert", Color3.fromRGB(255, 0, 0), false)
+
+local FreemiumSection = BypasserTab:CreateSection("Freemium Feature")
+local FreemiumParagraph = BypasserTab:CreateParagraph({Title = "Freemium Feature", Content = "The premium feature that has been transfered to the free version!"})
+local SpamSpeedInput = BypasserTab:CreateInput({
+    Name = "Spam Speed",
+	CurrentValue = "",
+	PlaceholderText = "Input Seconds",
+	RemoveTextAfterFocusLost = true,
+	Callback = function(value)
+        local numberValue = tonumber(value)
+        if numberValue and numberValue > 0 then
+            spamSpeed = numberValue
+            Rayfield:Notify({
+                Title = "Speed Updated",
+                Content = "Spam speed set to " .. spamSpeed .. " seconds.",
+                Duration = 2,
+				Image = "circle-check-big"
+            })
+        else
+            Rayfield:Notify({
+                Title = "Invalid Input",
+                Content = "Please enter a valid positive number.",
+                Duration = 2,
+				Image = "heart-crack"
+            })
+        end
+    end
+})
+
+local SpamToggle = BypasserTab:CreateToggle({
+	Name = "Spam toggle",
+	CurrentValue = false,
+	Callback = function(value)
+        spamEnabled = value
+        if spamEnabled and spamText ~= "" then
+            Rayfield:Notify({
+                Title = "Spamming Started",
+                Content = "Now spamming the text.",
+                Duration = 2,
+				Image = "circle-check-big"
+            })
+            while spamEnabled do
+                local convertedSpamText = convertToFont(spamText, selectedMode)
+                sendMessage(convertedSpamText)
+                wait(spamSpeed)
+            end
+        else
+            Rayfield:Notify({
+                Title = "Spamming Stopped",
+                Content = "Spam has been disabled.",
+                Duration = 2,
+				Image = "circle-check"
+            })
+        end
+    end
+})
+
+local SpamTextInput = BypasserTab:CreateInput({
+	Name = "Text to spam",
+	CurrentValue = "",
+	PlaceholderText = "Input text here!",
+	RemoveTextAfterFocusLost = true,
+	Callback = function(value)
+        spamText = value
+        Rayfield:Notify({
+            Title = "Text Updated",
+            Content = "Spam text set to: " .. spamText,
+            Duration = 2,
+			Image = "circle-check-big"
+        })
+    end
+})
+
+local premiumTab = Window:CreateTab("Freemium +", "air-vent")
+local premiumSection = premiumTab:CreateSection("Morse code +")
+local MessageCodeInput = premiumTab:CreateInput({
+	Name = "Code gen",
+    CurrentValue = "",
+	PlaceholderText = "Put text here rich boy",
+    RemoveTextAfterFocusLost = true,
+    Callback = function(value)
+        message = value
+		if message and #message > 0 then
+            local translatedMessage
+            if format == "Morse Code" then
+                translatedMessage = toMorse(message)
+            elseif format == "Binary" then
+                translatedMessage = toBinary(message)
+            end
+
+            sendMessageCoded(translatedMessage)
+        end
+	end
+})
+
+local BetterBypassSection = premiumTab:CreateSection("Better Bypass")
+local input2 = premiumTab:CreateInput({
+    Name = "BETTER Bypass",
+    CurrentValue = "",
+    PlaceholderText = "Enter Text",
+    RemoveTextAfterFocusLost = true,
+    Callback = function(value)
+        local convertedText = convertToFont(value, "Dots (2nd best)")
+        sendMessageIfNoTags(convertedText)
+    end,
+})
+
+
+local SexTab = Window:CreateTab("Freaky", "cigarette")
+
+local FreakyPhrases = {
+    "Let's cuddle tonight, bbg~",
+	"Wanna have some fun?~",
+	"Let's have a bit of fun, daddy~",
+	"Let's have a 'sleepover'~",
+	"Me, you, in bed, tonight...",
+	"Top or bottom?",
+	"Let's do the devil's tango~",
+	"Just us, alone?~"
+}
+for _, phrase in ipairs(FreakyPhrases) do
+    SexTab:CreateButton({
+        Name = phrase,
+        Callback = function()
+            local convertedPhrase = convertToFont(phrase, "Dots (2nd best)")
+            sendMessage(convertedPhrase)
+        end
+    })
+end
+
+local HomoTab = Window:CreateTab("Hate", "bug")
+local HomoPhrases = {
+    "Stfu, you fag.",
+	"Sorry, I don't speak to fags!",
+	"LGBTQ+? Get tf out.",
+	"Imagine being gay, I would never.",
+	"I AM homo, what you gonna do?",
+	"Fag filth",
+	"Nigga fag shut up!",
+	"Goddamn, I've never seen such a fag before!"
+}
+for _, phrase in ipairs(HomoPhrases) do
+    HomoTab:CreateButton({
+        Name = phrase,
+        Callback = function()
+            local convertedPhrase = convertToFont(phrase, "Dots (2nd best)")
+            sendMessage(convertedPhrase)
+        end
+    })
+end
+
+local CustomPhrasesTab = Window:CreateTab("Custom Phrases", "repeat")
+local TextChatService = game:GetService("TextChatService")
+local CustomPhrasesTextBox = CustomPhrasesTab:CreateInput({
+	Name = "Enter Custom Phrase", 
+    CurrentValue = "",
+	PlaceholderText = "OmG bAd WodR !1!",
+    RemoveTextAfterFocusLost = true, 
+    Callback = function(value)
+        if value ~= "" then
+            CustomPhrasesTab:CreateButton({
+                Name = value,
+                Callback = function()
+                    local convertedPhrase = convertToFont(value, "Dots (2nd best)")
+					
+                    local chatMessage = TextChatService.TextChannels.RBXGeneral:SendAsync(convertedPhrase)
+                    
+                    if chatMessage then
+                        Rayfield:Notify({
+                            Title = "Sent!", 
+                            Content = "Custom phrase has been converted and sent in chat.", 
+                            Duration = 2,
+							Image = "circle-check-big"
+                        })
+                    else
+                        Rayfield:Notify({
+                            Title = "Failed...", 
+                            Content = "Could not send the custom phrase in chat.", 
+                            Duration = 2,
+							Image = "heart-crack"
+                        })
+                    end
+                end
+            })
+        end
+    end
+})
+
+local CreditsTab = Window:CreateTab("Credits", "book-check")
+local CreditsP1 = CreditsTab:CreateLabel("Scripted by BigBoyTimme", 4483362458, Color3.fromRGB(0, 0, 150), false)
+local CreditsP2 = CreditsTab:CreateLabel("Thanks to Notepad++ 💀", 4483362458, Color3.fromRGB(150, 0, 0), false)
+setclipboard("discord.gg/2xWPd6rD")
